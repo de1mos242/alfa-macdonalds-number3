@@ -17,7 +17,7 @@ interface BranchRepository : CrudRepository<Branch, Int> {
             select br as branch, sqrt(pow(69.1 * (br.lat - :lat), 2) + 
                                 pow(69.1 * (:lon - br.lon) * cos(br.lat / 57.3), 2)) as dist 
             from Branch br
-            order by dist
+            order by dist asc 
             
     """)
     fun findNearest(lat: Float, lon: Float): List<BranchDist>

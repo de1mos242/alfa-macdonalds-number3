@@ -9,7 +9,9 @@ import kotlin.math.roundToLong
 
 data class GetBranchByIdResponse(val id: Int, val title: String?, val lon: Float?, val lat: Float?, val address: String?)
 data class NotFoundResponse(val status: String)
-data class NearestBranchResponse(val id: Int, val title: String?, val lon: Float?, val lat: Float?, val address: String?, val distance: Long)
+data class NearestBranchResponse(val id: Int, val title: String?, val lon: Float?, val lat: Float?, val address: String?
+//                                 , val distance: Long
+)
 
 @RestController
 @RequestMapping("/branches")
@@ -29,6 +31,8 @@ class BranchController(private val branchRepository: BranchRepository) {
         val nearest = branchRepository.findNearest(lat, lon)
         val d = nearest.first()
         val branch = d.branch
-        return NearestBranchResponse(branch.id, branch.title, branch.lon, branch.lat, branch.address, d.dist.roundToLong())
+        return NearestBranchResponse(branch.id, branch.title, branch.lon, branch.lat, branch.address
+//                , d.dist.roundToLong()
+        )
     }
 }
