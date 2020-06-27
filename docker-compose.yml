@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  alfa-battle-task3:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: appdb
+    volumes:
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+      - 35432:5432
